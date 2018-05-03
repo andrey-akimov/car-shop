@@ -17,7 +17,8 @@ body {
 	margin: 0 auto;
 }
 
-.no-cars {
+.no-cars,
+.not-found {
 	text-align: center;
 	margin-top: 200px;
 	font-size: 80px;
@@ -41,7 +42,22 @@ body {
 	height: 80px;
 }
 
-/* MAIN CONTENT */
+.menu {
+	margin: -15px 20px 0;
+}
+
+.menu__item {
+	text-align: center;
+}
+
+.menu__link {
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000;
+}
+
+/* CAR LIST */
 .car-list {
 	padding-bottom: 60px;
 	display: flex;
@@ -66,10 +82,10 @@ body {
 }
 
 .car-list__item_text {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 100%;
 	margin: 0 0 20px 20px;
 }
 
@@ -106,6 +122,26 @@ body {
 	font-size: 24px;
 	color: red;
 	font-weight: bold;
+}
+
+/* ADD A CAR */
+.add-car__header {
+	margin: 50px 0 80px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 40px;
+}
+
+.add-car__text-field {
+	margin-top: 50px !important;
+	display: block !important;
+	margin: 0 auto;
+}
+
+.add-car__btn {
+	display: block !important;
+	width: 200px;
+	margin: 100px auto 50px !important;
 }
 
 /* FOOTER */
@@ -194,7 +230,20 @@ body {
 
 	.header__logo {
 		width: 100%;
-		text-align: center;
+		padding-left: 5px;
+	}
+
+	.add-car__header {
+		margin: 50px 0;
+	}
+
+	.menu {
+		padding-right: 5px;
+	}
+
+	.add-car__text-field {
+		width: 90% !important;
+		margin-top: 30px !important;
 	}
 
 	.footer__container {
@@ -208,7 +257,8 @@ body {
 }
 
 @media only screen and (max-width: 480px) {
-	.no-cars {
+	.no-cars,
+	.not-found {
 		margin-top: 120px;
 		font-size: 60px;
 	}
@@ -232,6 +282,10 @@ body {
 	.read-more {
 		display: block;
 		font-size: 18px;
+	}
+
+	.add-car__btn {
+		width: 90%;
 	}
 
 	.footer__counter,

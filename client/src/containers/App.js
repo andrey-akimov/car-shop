@@ -4,11 +4,12 @@ import Snackbar from 'material-ui/Snackbar'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import axios from 'axios'
-import '../style.css'
+import { Switch, Route } from 'react-router-dom'
 import generateData from '../helper'
 import Header from '../components/Header'
-import CarList from '../components/CarList'
-import Footer from '../components/Footer'
+import PageHome from '../components/PageHome'
+import PageAddCar from './PageAddCar'
+import PageNotFound from '../components/PageNotFound'
 
 class App extends Component {
 	state = {
@@ -17,6 +18,7 @@ class App extends Component {
 		error: false,
 		snackbarOpen: false,
 		modalOpen: false,
+		menuOpen: false,
 		counter: {
 			totalCars: 0,
 			totalAmount: 0,
@@ -76,6 +78,10 @@ class App extends Component {
 		this.setState({ modalOpen: !this.state.modalOpen })
 	}
 
+	menuHandler = () => {
+		this.setState({ menuOpen: !this.state.menuOpen })
+	}
+
 	getData = () => {
 		this.setState({ loading: true })
 		axios
@@ -126,13 +132,27 @@ class App extends Component {
 		return (
 			<MuiThemeProvider>
 				<Fragment>
-					<Header />
-					<CarList deleteCarHandler={this.deleteCarHandler} {...this.state} />
-					<Footer
-						modalHandler={this.modalHandler}
-						footerBtnHandler={this.footerBtnHandler}
-						counter={this.state.counter}
-					/>
+					<Header menuHandler={this.menuHandler} menuOpen={this.state.menuOpen} />
+					<Switch>
+						<Route
+							exact
+							path="/"
+							render={() => (
+								<PageHome
+									deleteCarHandler={this.deleteCarHandler}
+									modalHandler={this.modalHandler}
+									footerBtnHandler={this.footerBtnHandler}
+									state={this.state}
+								/>
+							)}
+						/>
+						<Route
+							path="/add-car"
+							render={() => <PageAddCar getData={this.getData} />}
+						/>
+						<Route component={PageNotFound} />
+					</Switch>
+
 					{/* Snackbar */}
 					<Snackbar
 						open={this.state.snackbarOpen}

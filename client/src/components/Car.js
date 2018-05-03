@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton'
 const Car = ({ title, description, image, price, deleteCarHandler, _id }) => {
 	return (
 		<Paper className="car-list__item" zDepth={2}>
-			<img className="car-list__item_img" src={image} />
+			<img className="car-list__item_img" src={image} alt="" />
 			<div className="car-list__item_text">
 				<div className="car-list__top-line">
 					<h3>{title}</h3>

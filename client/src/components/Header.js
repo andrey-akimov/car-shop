@@ -1,13 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import Menu from './Menu'
 import logo from '../img/logo.png'
 
-const Header = () => {
+const Header = props => {
 	return (
 		<div className="header">
 			<div className="container header__container">
-				<a className="header__logo" href="/">
+				<Link className="header__logo" to="/">
 					<img src={logo} alt="logo" />
-				</a>
+				</Link>
+				<Menu {...props} />
 			</div>
 		</div>
 	)
